@@ -12,4 +12,4 @@ $ ./setup.sh
 
 ```
 
-### [more](https://ronggle.com/2018/05/13/cloud-labs/)
+### [more](https://baidu.com)
