@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+  seafile_org1:
+    image: seafileltd/seafile
+    container_name: seafile_org1
+    restart: unless-stopped
+    environment:
+      SEAFILE_ADMIN_EMAIL: admin@email.com
+      SEAFILE_ADMIN_PASSWORD: admin
+      SEAFILE_SERVER_HOSTNAME: pan.libaibuaidufu.live
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.frontend.rule=Host:pan.libaibuaidufu.live
+        - traefik.port=80
+        - traefik.backend=seafile_org1
+        - traefik.docker.network=traefik_proxy
+    ports:
+      - "8080:80"
+    volumes:
+      - /opt/seafile-data/org1:/shared
+    networks:
+      - traefik_proxy
+networks:
+  traefik_proxy:
+    external: true
